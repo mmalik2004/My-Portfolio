@@ -1,0 +1,79 @@
+/* ===================================================
+   SocialSidebar.css  —  Fixed left social icons
+   =================================================== */
+
+/* Vertical bar fixed on the left, vertically centered */
+.social-sidebar {
+  position: fixed;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Thin vertical line above and below icons */
+.social-sidebar::before,
+.social-sidebar::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, rgba(139,92,246,0.5));
+}
+.social-sidebar::before { order: -1; }
+.social-sidebar::after  {
+  background: linear-gradient(to top, transparent, rgba(139,92,246,0.5));
+}
+
+/* Each icon link */
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #94a3b8;
+  text-decoration: none;
+  transition: transform 0.25s, color 0.25s, background 0.25s, box-shadow 0.25s;
+  position: relative;
+}
+
+/* Tooltip on hover */
+.social-icon::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 52px;
+  background: rgba(139,92,246,0.9);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-6px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.social-icon:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Hover glow */
+.social-icon:hover {
+  transform: translateY(-4px) scale(1.12);
+  background: rgba(139,92,246,0.18);
+  border-color: rgba(139,92,246,0.5);
+  color: #c4b5fd;
+  box-shadow: 0 0 20px rgba(139,92,246,0.35);
+}
+
+/* SVG icon sizing */
+.social-icon svg { width: 18px; height: 18px; }
