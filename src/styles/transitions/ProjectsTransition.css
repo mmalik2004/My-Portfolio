@@ -1,0 +1,150 @@
+.rkt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  background: linear-gradient(135deg, #0d0d1a 0%, #120d2e 40%, #1a0a2e 70%, #0d0d1a 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: rktFadeOut 0.5s ease 2.1s forwards;
+}
+
+@keyframes rktFadeOut {
+  to { opacity: 0; pointer-events: none; }
+}
+
+.rkt-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  animation: rktTwinkle 2s ease-in-out infinite;
+}
+
+@keyframes rktTwinkle {
+  0%, 100% { opacity: 0.12; }
+  50%       { opacity: 0.9; }
+}
+
+/* Launchpad glow */
+.rkt-launchpad-glow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 340px;
+  height: 160px;
+  background: radial-gradient(ellipse at bottom,
+    rgba(236,72,153,0.5) 0%,
+    rgba(249,115,22,0.3) 40%,
+    transparent 70%);
+  pointer-events: none;
+  animation: rktGlowPulse 0.35s ease-in-out infinite alternate;
+}
+
+@keyframes rktGlowPulse {
+  from { opacity: 0.6; transform: translateX(-50%) scaleX(0.85); }
+  to   { opacity: 1;   transform: translateX(-50%) scaleX(1.15); }
+}
+
+/* Rocket wrapper — sits at bottom, launches up */
+.rkt-rocket-wrap {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: rktLaunch 2.0s cubic-bezier(0.3, 0.0, 0.2, 1.0) 0.35s forwards;
+  filter: drop-shadow(0 0 22px rgba(139,92,246,0.9))
+          drop-shadow(0 0 8px rgba(236,72,153,0.6));
+}
+
+@keyframes rktLaunch {
+  0%   { transform: translateX(-50%) translateY(0)    scale(1);    opacity: 1; }
+  8%   { transform: translateX(-50%) translateY(12px) scale(0.97); }
+  18%  { transform: translateX(-50%) translateY(-18px) scale(1.03); }
+  100% { transform: translateX(-50%) translateY(-115vh) scale(0.5); opacity: 0.4; }
+}
+
+.rkt-rocket {
+  width: 100px;
+  height: auto;
+}
+
+/* Flame below rocket */
+.rkt-flame-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  height: 0;
+  width: 100%;
+}
+
+.rkt-flame {
+  position: absolute;
+  top: 0;
+  border-radius: 0 0 50% 50%;
+  transform-origin: top center;
+  animation: rktFlameFlicker 0.12s ease-in-out infinite alternate;
+}
+
+.rkt-flame-outer {
+  width: 44px;
+  height: 90px;
+  background: linear-gradient(to bottom, #f97316, #fbbf24, transparent);
+  opacity: 0.7;
+}
+
+.rkt-flame-mid {
+  width: 28px;
+  height: 70px;
+  background: linear-gradient(to bottom, #ec4899, #f97316, transparent);
+  opacity: 0.85;
+}
+
+.rkt-flame-inner {
+  width: 14px;
+  height: 50px;
+  background: linear-gradient(to bottom, #fff, #fbbf24, transparent);
+  opacity: 1;
+}
+
+@keyframes rktFlameFlicker {
+  from { transform: scaleX(0.85) scaleY(0.9); }
+  to   { transform: scaleX(1.15) scaleY(1.1); }
+}
+
+/* Spark particles */
+.rkt-particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: rktSpark var(--dur, 0.9s) ease-out var(--delay, 0s) forwards;
+}
+
+@keyframes rktSpark {
+  0%   { transform: translateY(0) translateX(0) scale(1);   opacity: 1; }
+  100% { transform: translateY(100px) translateX(var(--drift)) scale(0); opacity: 0; }
+}
+
+.rkt-launch-text {
+  position: absolute;
+  bottom: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(251,191,36,0.8);
+  white-space: nowrap;
+  animation: rktTextPulse 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes rktTextPulse {
+  from { opacity: 0.3; }
+  to   { opacity: 1; }
+}

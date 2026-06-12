@@ -1,0 +1,110 @@
+.abt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  background: linear-gradient(135deg, #0d0d1a 0%, #120d2e 40%, #1a0a2e 70%, #0d0d1a 100%);
+  overflow: hidden;
+  animation: abtFadeOut 0.5s ease 2.1s forwards;
+}
+
+@keyframes abtFadeOut {
+  to { opacity: 0; pointer-events: none; }
+}
+
+.abt-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  animation: abtTwinkle 2s ease-in-out infinite;
+}
+
+@keyframes abtTwinkle {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50%       { opacity: 0.9;  transform: scale(1.6); }
+}
+
+/* Plane flies from bottom-left to top-right diagonally */
+.abt-plane-wrap {
+  position: absolute;
+  bottom: -60px;
+  left: -300px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  animation: abtPlaneFlies 2.0s cubic-bezier(0.2, 0.6, 0.4, 1.0) 0.2s forwards;
+  filter:
+    drop-shadow(0 0 18px rgba(255, 255, 255, 0.8))
+    drop-shadow(0 0 40px rgba(139, 92, 246, 0.5));
+}
+
+@keyframes abtPlaneFlies {
+  0%   {
+    transform: translate(0, 0) rotate(-20deg);
+    opacity: 0;
+  }
+  8%   { opacity: 1; }
+  100% {
+    transform: translate(130vw, -95vh) rotate(-20deg);
+    opacity: 1;
+  }
+}
+
+.abt-plane {
+  width: 280px;
+  height: auto;
+  filter: drop-shadow(2px 2px 8px rgba(100, 100, 255, 0.4));
+}
+
+/* Dotted trail behind plane */
+.abt-trail {
+  position: absolute;
+  right: 260px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.abt-trail-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  animation: abtDotFade 0.4s ease-in-out infinite alternate;
+  box-shadow: 0 0 6px rgba(255,255,255,0.5);
+}
+
+@keyframes abtDotFade {
+  from { opacity: 0.2; transform: scale(0.7); }
+  to   { opacity: 1;   transform: scale(1.2); }
+}
+
+/* Page title text */
+.abt-text {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  animation: abtTextPulse 0.7s ease-in-out infinite alternate;
+  white-space: nowrap;
+}
+
+@keyframes abtTextPulse {
+  from { opacity: 0.3; letter-spacing: 5px; }
+  to   { opacity: 0.9; letter-spacing: 7px; }
+}
+
+.abt-horizon-glow {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 200px;
+  background: linear-gradient(to top, rgba(124,58,237,0.1), transparent);
+  pointer-events: none;
+}

@@ -77,3 +77,42 @@
 
 /* SVG icon sizing */
 .social-icon svg { width: 18px; height: 18px; }
+
+/* =====================
+   RESPONSIVE — SocialSidebar
+   ===================== */
+
+@media (max-width: 768px) {
+  /* Move sidebar to bottom horizontal bar on mobile */
+  .social-sidebar {
+    top: auto;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;
+    gap: 12px;
+    background: rgba(13,13,26,0.88);
+    border: 1px solid rgba(139,92,246,0.2);
+    border-radius: 999px;
+    padding: 8px 16px;
+    backdrop-filter: blur(16px);
+  }
+
+  /* Hide the vertical lines */
+  .social-sidebar::before,
+  .social-sidebar::after { display: none; }
+
+  /* Tooltip now appears above */
+  .social-icon::after {
+    left: 50%;
+    top: auto;
+    bottom: 48px;
+    transform: translateX(-50%) translateY(6px);
+  }
+  .social-icon:hover::after {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .social-icon { width: 36px; height: 36px; }
+  .social-icon svg { width: 16px; height: 16px; }
+}

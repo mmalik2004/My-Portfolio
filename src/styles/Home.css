@@ -195,3 +195,60 @@
   0%,100% { opacity: 0.2; transform: scale(1); }
   50%      { opacity: 1;   transform: scale(1.4); }
 }
+/* =====================
+   RESPONSIVE — Home
+   ===================== */
+
+@media (max-width: 1024px) {
+  .hero-layout {
+    grid-template-columns: 1fr 340px;
+    gap: 32px;
+  }
+  .hero-visual { height: 380px; }
+  .hero-planet { width: 230px; height: 230px; }
+  .hero-planet::before { width: 310px; height: 65px; }
+  .hero-astronaut { width: 130px; height: 130px; }
+}
+
+@media (max-width: 768px) {
+  .home-hero { padding-top: 80px; align-items: flex-start; }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* Hide the right visual on mobile */
+  .hero-visual { display: none; }
+
+  .home-content { padding-top: 20px; }
+
+  .hero-name {
+    font-size: clamp(36px, 10vw, 52px);
+    letter-spacing: -1px;
+  }
+
+  .hero-typed { font-size: 16px; }
+
+  .hero-bio {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  .hero-btns { margin-bottom: 32px; }
+
+  .hero-stats { flex-wrap: wrap; gap: 0; }
+  .hero-stat  { padding: 0 16px; }
+  .hero-stat:first-child { padding-left: 0; }
+  .stat-number { font-size: 18px; }
+}
+
+@media (max-width: 480px) {
+  .hero-badge { font-size: 11px; padding: 5px 14px; }
+  .hero-name  { font-size: clamp(32px, 9vw, 44px); }
+  .hero-bio   { font-size: 13px; }
+  .hero-stats { gap: 4px 0; }
+  .stat-number { font-size: 16px; }
+  .stat-label  { font-size: 10px; }
+  .hero-stat   { padding: 0 12px; }
+}

@@ -60,14 +60,14 @@ function About() {
             <div className="avatar-circle">👩‍💻</div>
 
             <p className="about-name">Mehak Malik</p>
-            <p className="about-role">Full Stack Developer</p>
+            <p className="about-role">Software Developer</p>
 
             <div className="about-info-list">
               {[
                 { icon: '🎓', text: 'J.C. Bose University (YMCA)' },
                 { icon: '📍', text: 'Faridabad, Haryana, India'       },
                 { icon: '📊', text: 'CGPA: 8.40'                   },
-                { icon: '📧', text: 'mehakmalik1282@gmail.com'     },
+                { icon: '✉️', text: 'mehakmalik1282@gmail.com' }
               ].map(({ icon, text }) => (
                 <div className="about-info-row" key={text}>
                   <div className="about-info-icon">{icon}</div>
@@ -79,7 +79,7 @@ function About() {
 
           {/* Right — bio text */}
           <div className="about-bio reveal" style={{ transitionDelay: '150ms' }}>
-            <h3>Computer Engineering Student &amp; MERN Developer</h3>
+            <h3>Software Engineer </h3>
 
             <p>
               I'm Mehak, a B.Tech Computer Engineering student specializing in full-stack
@@ -90,8 +90,7 @@ function About() {
 
             <p>
               My love for problem-solving extends beyond code — I've solved 900+ DSA problems,
-              secured a position in the top 1.92% in JEE Main among 1.2M+ candidates, and placed
-              in the top 10% of 500+ teams at Vihaan 007 Hackathon at DTU Delhi.
+              secured a position in the top 1.92% in JEE Main among 1.2M+ candidates
             </p>
 
             <p>
@@ -100,7 +99,7 @@ function About() {
             </p>
 
             <div className="tag-row">
-              {['MERN Stack', 'Real-time Systems', 'DSA', 'Hackathons', 'Open Source'].map((t) => (
+              {['Software Development', 'Real-time Systems', 'DSA', 'Hackathons', 'Open Source'].map((t) => (
                 <span key={t} className="tag-pill">{t}</span>
               ))}
             </div>

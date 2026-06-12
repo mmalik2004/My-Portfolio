@@ -1,0 +1,56 @@
+/* PortfolioFAB.css — Fixed bottom-center floating button */
+
+.portfolio-fab {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1100;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+  border: none;
+  color: #fff;
+  padding: 13px 24px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.45);
+  transition: transform 0.25s, box-shadow 0.25s;
+  white-space: nowrap;
+}
+
+.portfolio-fab:hover {
+  transform: translateX(-50%) translateY(-4px);
+  box-shadow: 0 16px 40px rgba(139, 92, 246, 0.6);
+}
+
+.portfolio-fab svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.fab-label {
+  font-family: 'Inter', sans-serif;
+}
+
+/* =====================
+   RESPONSIVE — FAB
+   ===================== */
+
+@media (max-width: 768px) {
+  .portfolio-fab {
+    bottom: 20px;
+    padding: 11px 20px;
+    font-size: 12px;
+  }
+
+  .portfolio-fab svg { width: 16px; height: 16px; }
+}

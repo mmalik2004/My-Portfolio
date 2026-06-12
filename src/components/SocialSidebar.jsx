@@ -34,17 +34,17 @@ const EmailIcon = () => (
 const SOCIALS = [
   {
     icon: <GitHubIcon />,
-    href: 'https://github.com/mehakmalik',          /* ← update with real URL */
+    href: 'https://github.com/mmalik2004',          /* ← update with real URL */
     tooltip: 'GitHub',
   },
   {
     icon: <LinkedInIcon />,
-    href: 'https://linkedin.com/in/mehak-malik',   /* ← update with real URL */
+    href: 'https://linkedin.com/in/mehak-malik-455b9b258',   /* ← update with real URL */
     tooltip: 'LinkedIn',
   },
   {
     icon: <LeetCodeIcon />,
-    href: 'https://leetcode.com/mehakmalik',        /* ← update with real URL */
+    href: 'https://leetcode.com/u/malik01',        /* ← update with real URL */
     tooltip: 'LeetCode',
   },
   {

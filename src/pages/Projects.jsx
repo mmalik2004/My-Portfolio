@@ -26,6 +26,18 @@ const PROJECTS = [
     github: 'https://github.com/mehakmalik',   /* ← update */
   },
   {
+    title: 'Weather App',
+    date: '2024',
+    gradient: 'linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0284c7 100%)',
+    tags: ['JavaScript', 'CSS', 'HTML', 'OpenWeather API'],
+    bullets: [
+      'Clean weather dashboard with current conditions and 7-day forecast.',
+      'Location search with real-time API calls to OpenWeather.',
+      'Fully responsive layout across all screen sizes.',
+    ],
+    github: 'https://github.com/mehakmalik',   /* ← update */
+  },
+  {
     title: 'TypeRush',
     date: 'Jun 2025',
     gradient: 'linear-gradient(135deg, #064e3b 0%, #065f46 50%, #059669 100%)',
@@ -49,18 +61,7 @@ const PROJECTS = [
     ],
     github: 'https://github.com/mehakmalik',   /* ← update */
   },
-  {
-    title: 'Weather App',
-    date: '2024',
-    gradient: 'linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0284c7 100%)',
-    tags: ['JavaScript', 'CSS', 'HTML', 'OpenWeather API'],
-    bullets: [
-      'Clean weather dashboard with current conditions and 7-day forecast.',
-      'Location search with real-time API calls to OpenWeather.',
-      'Fully responsive layout across all screen sizes.',
-    ],
-    github: 'https://github.com/mehakmalik',   /* ← update */
-  },
+  
 ];
 
 /* ── Project card ── */

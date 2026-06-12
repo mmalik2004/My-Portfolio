@@ -154,3 +154,31 @@
   font-family: 'Inter', sans-serif;
   font-size: 13px; color: #334155;
 }
+
+/* =====================
+   RESPONSIVE — Experience
+   ===================== */
+
+@media (max-width: 768px) {
+  .exp-timeline::before { left: 14px; }
+
+  .exp-item {
+    padding-left: 44px;
+    gap: 20px;
+  }
+
+  .exp-dot { left: 5px; top: 18px; width: 16px; height: 16px; }
+
+  .exp-card { padding: 18px; }
+  .exp-role { font-size: 15px; }
+  .exp-top  { flex-direction: column; gap: 8px; }
+  .exp-badge { align-self: flex-start; }
+}
+
+@media (max-width: 480px) {
+  .exp-card    { padding: 14px; }
+  .exp-role    { font-size: 14px; }
+  .exp-company { font-size: 13px; }
+  .exp-bullet  { font-size: 12px; }
+  .exp-tag     { font-size: 10px; }
+}

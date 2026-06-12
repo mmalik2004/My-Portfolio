@@ -1,6 +1,5 @@
-/* Navbar.jsx — Added Experience link + resume download with correct path */
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import '../styles/Navbar.css';
 
 const LINKS = [
@@ -11,8 +10,10 @@ const LINKS = [
   { label: 'Education',  to: '/education'  },
 ];
 
-function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+function Navbar({ userMode = false, userData = null }) {
+  const [scrolled,     setScrolled]     = useState(false);
+  const [menuOpen,     setMenuOpen]     = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
@@ -20,43 +21,70 @@ function Navbar() {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  /* Resume download handler */
-  const handleResume = () => {
-    /* Creates a hidden <a> tag and clicks it to force download */
-    const link = document.createElement('a');
-    link.href = '/Mehak_Malik_Resume.pdf';
-    link.download = 'Mehak_Malik_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  /* Close drawer on route change */
+  useEffect(() => { setMenuOpen(false); }, [location]);
+
+  /* Lock body scroll when drawer open */
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
+  if (userMode && userData) {
+    return (
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <span className="nav-logo" style={{ cursor: 'default' }}>
+          {userData.name.split(' ')[0]}.
+        </span>
+      </nav>
+    );
+  }
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <NavLink to="/" className="nav-logo">Mehak.</NavLink>
+    <>
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <NavLink to="/" className="nav-logo">Mehak.</NavLink>
 
-      <div className="nav-links">
+        {/* Desktop links */}
+        <div className="nav-links">
+          {LINKS.map((l) => (
+            <NavLink
+              key={l.to}
+              to={l.to}
+              end={l.to === '/'}
+              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+            >
+              {l.label}
+            </NavLink>
+          ))}
+        </div>
+
+        {/* Hamburger */}
+        <button
+          className={`nav-hamburger ${menuOpen ? 'open' : ''}`}
+          onClick={() => setMenuOpen(o => !o)}
+          aria-label="Toggle menu"
+        >
+          <span /><span /><span />
+        </button>
+      </nav>
+
+      {/* Mobile drawer */}
+      <div className={`nav-mobile-drawer ${menuOpen ? 'open' : ''}`}>
         {LINKS.map((l) => (
           <NavLink
             key={l.to}
             to={l.to}
             end={l.to === '/'}
-            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+            className={({ isActive }) =>
+              `nav-mobile-link ${isActive ? 'active' : ''}`
+            }
           >
             {l.label}
           </NavLink>
         ))}
-
-        {/* Resume button — triggers download */}
-        <button
-          onClick={handleResume}
-          className="nav-link nav-resume"
-          style={{ background: 'none', border: 'none', cursor: 'pointer' }}
-        >
-          Resume ↓
-        </button>
       </div>
-    </nav>
+    </>
   );
 }
 

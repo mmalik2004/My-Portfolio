@@ -6,16 +6,16 @@ const EXPERIENCES = [
   {
     role: 'Software Development Engineer Intern',
     company: 'Airtel (Bharti Airtel)',
-    period: 'May 2025 – Present',
+    period: 'May 2026 – Present',
     type: 'active',
     badge: '● Currently Working',
     bullets: [
-      'Working on internal web tools and dashboards using React and Node.js.',
-      'Collaborating with the product team to ship features in an agile environment.',
-      'Contributing to backend API development using ExpressJS and MongoDB.',
-      'Participating in code reviews, sprint planning, and technical discussions.',
+      'Developed responsive web applications using React.js, JavaScript, HTML5, and CSS3 for internal business tools.',
+      'Created reusable UI components and implemented modern frontend practices to improve maintainability and user experience.',
+      'Contributed to debugging, testing, and code review processes while working in an Agile development environment',
+      'Improved application responsiveness and ensured compatibility across multiple browsers and screen sizes.',
     ],
-    tags: ['React', 'Node.js', 'MongoDB', 'ExpressJS', 'REST API'],
+    tags: ['React', 'JavaScript', 'Responsive Design', ],
     dotActive: true,
   },
 ];

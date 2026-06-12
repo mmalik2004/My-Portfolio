@@ -1,0 +1,241 @@
+.bk-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  background: linear-gradient(135deg, #0d0d1a 0%, #120d2e 40%, #1a0a2e 70%, #0d0d1a 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: bkFadeOut 0.55s ease 2.15s forwards;
+}
+
+@keyframes bkFadeOut {
+  to { opacity: 0; pointer-events: none; }
+}
+
+.bk-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  animation: bkTwinkle 2.5s ease-in-out infinite;
+}
+
+@keyframes bkTwinkle {
+  0%, 100% { opacity: 0.1; }
+  50%       { opacity: 0.8; }
+}
+
+/* Scene — holds all book parts together */
+.bk-scene {
+  position: relative;
+  width: 420px;
+  height: 280px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  filter: drop-shadow(0 20px 50px rgba(0,0,0,0.6))
+          drop-shadow(0 0 30px rgba(139,92,246,0.3));
+  animation: bkDropIn 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.1s both;
+}
+
+@keyframes bkDropIn {
+  from { transform: translateY(-60px) scale(0.85); opacity: 0; }
+  to   { transform: translateY(0)     scale(1);    opacity: 1; }
+}
+
+/* Pages — base styles */
+.bk-page {
+  width: 200px;
+  height: 280px;
+  background: #ffffff;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Right page — static */
+.bk-page-right {
+  border-radius: 3px 8px 8px 3px;
+  box-shadow: 4px 4px 20px rgba(0,0,0,0.4);
+  background: linear-gradient(to right, #f0f0f0 0%, #ffffff 6%);
+}
+
+/* Left page — animates open */
+.bk-page-left {
+  border-radius: 8px 3px 3px 8px;
+  transform-origin: right center;
+  box-shadow: -4px 4px 20px rgba(0,0,0,0.4);
+  background: linear-gradient(to left, #f0f0f0 0%, #ffffff 6%);
+}
+
+/* Closed: left page folded on top of right */
+.bk-page-left-closed {
+  transform: perspective(900px) rotateY(80deg);
+  opacity: 0.4;
+}
+
+/* Opening: rotates to flat */
+.bk-page-left-opening {
+  transform: perspective(900px) rotateY(0deg);
+  transition: transform 0.75s cubic-bezier(0.34,1.2,0.64,1), opacity 0.4s;
+  opacity: 1;
+}
+
+/* Fluttering: stays open */
+.bk-page-left-fluttering {
+  transform: perspective(900px) rotateY(0deg);
+  opacity: 1;
+}
+
+/* Done */
+.bk-page-left-done {
+  transform: perspective(900px) rotateY(0deg);
+  opacity: 1;
+}
+
+/* Text lines on pages */
+.bk-page-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.bk-line {
+  height: 3px;
+  background: linear-gradient(90deg, #9ca3af, #d1d5db);
+  border-radius: 99px;
+}
+
+/* Fold shadow on left page near spine */
+.bk-page-fold-shadow {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 18px;
+  background: linear-gradient(to left, rgba(0,0,0,0.15), transparent);
+  pointer-events: none;
+}
+
+/* Curled corner */
+.bk-page-corner {
+  position: absolute;
+  width: 22px; height: 22px;
+  bottom: 0;
+}
+.bk-corner-br {
+  right: 0;
+  border-bottom-right-radius: 8px;
+  background: linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.08) 50%);
+}
+.bk-corner-bl {
+  left: 0;
+  border-bottom-left-radius: 8px;
+  background: linear-gradient(225deg, transparent 50%, rgba(0,0,0,0.08) 50%);
+}
+
+/* Spine */
+.bk-spine {
+  width: 18px;
+  background: linear-gradient(to bottom,
+    #6d28d9 0%,
+    #7c3aed 30%,
+    #8b5cf6 50%,
+    #7c3aed 70%,
+    #6d28d9 100%);
+  box-shadow: 0 0 14px rgba(139,92,246,0.6);
+  z-index: 5;
+  flex-shrink: 0;
+}
+
+/* Book bottom cover */
+.bk-cover-bottom {
+  position: absolute;
+  bottom: -8px;
+  left: 10px; right: 10px;
+  height: 12px;
+  background: #6d28d9;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+
+/* Flutter pages — white pages that fly out */
+.bk-flutter-page {
+  position: absolute;
+  width: 190px;
+  height: 265px;
+  background: white;
+  border-radius: 3px;
+  top: 8px; left: 50%;
+  transform-origin: bottom center;
+  animation: bkPageFlutter 0.6s ease-in-out forwards;
+  opacity: 0.9;
+  box-shadow: 2px 2px 12px rgba(0,0,0,0.25);
+}
+
+@keyframes bkPageFlutter {
+  0%   {
+    transform: translateX(-50%) rotate(0deg) translateX(0) translateY(0);
+    opacity: 0.9;
+  }
+  30%  {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(calc(-50% + var(--tx))) rotate(var(--rot)) translateY(var(--ty));
+    opacity: 0;
+  }
+}
+
+/* Floating particles — small paper bits */
+.bk-float-particle {
+  position: absolute;
+  background: rgba(255,255,255,0.6);
+  border-radius: 2px;
+  animation: bkParticleFloat 1s ease-out forwards;
+}
+
+@keyframes bkParticleFloat {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg);             opacity: 0.7; }
+  100% { transform: translateY(-120px) translateX(var(--drift)) rotate(var(--rot)); opacity: 0; }
+}
+
+/* Floor glow */
+.bk-floor-glow {
+  width: 280px; height: 24px;
+  background: radial-gradient(ellipse, rgba(139,92,246,0.4), transparent 70%);
+  border-radius: 50%;
+  margin-top: 10px;
+  animation: bkGlowPulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes bkGlowPulse {
+  from { opacity: 0.4; transform: scaleX(0.8); }
+  to   { opacity: 0.9; transform: scaleX(1.1); }
+}
+
+/* Text */
+.bk-text {
+  position: absolute;
+  bottom: 9%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(167,139,250,0.75);
+  white-space: nowrap;
+  animation: bkTextPulse 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes bkTextPulse {
+  from { opacity: 0.3; letter-spacing: 4px; }
+  to   { opacity: 1;   letter-spacing: 6px; }
+}
