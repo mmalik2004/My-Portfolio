@@ -82,7 +82,7 @@ function About() {
             <h3>Software Engineer </h3>
 
             <p>
-              I'm Mehak, a B.Tech Computer Engineering student specializing in full-stack
+              I'm Mehak, a B.Tech Computer Engineering student specializing in 
               web development. I enjoy building real-time, high-performance web applications
               using the MERN stack — from architecting WebSocket systems to crafting clean,
               responsive UIs.

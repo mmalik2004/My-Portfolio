@@ -163,7 +163,7 @@ const STATS = [
 export default function Home() {
   const navigate = useNavigate();
   const typed = useTypewriter([
-    'Full Stack Developer',
+    'Software Developer',
     'React Enthusiast',
     'DSA Problem Solver',
     'CS Engineering Student',

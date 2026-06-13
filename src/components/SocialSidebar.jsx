@@ -47,11 +47,11 @@ const SOCIALS = [
     href: 'https://leetcode.com/u/malik01',        /* ← update with real URL */
     tooltip: 'LeetCode',
   },
-  {
-    icon: <EmailIcon />,
-    href: 'mailto:mehakmalik1282@gmail.com',
-    tooltip: 'Email',
-  },
+  // {
+  //   icon: <EmailIcon />,
+  //   href: 'mailto:mehakmalik1282@gmail.com',
+  //   tooltip: 'Email',
+  // },
 ];
 
 function SocialSidebar() {

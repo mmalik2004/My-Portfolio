@@ -2,16 +2,16 @@ import { useEffect, useState, useCallback } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar           from './components/Navbar';
 import SocialSidebar    from './components/SocialSidebar';
-import PortfolioFAB     from './components/PortfolioFAB';
+// import PortfolioFAB     from './components/PortfolioFAB';
 import Home             from './pages/Home';
 import About            from './pages/About';
 import Projects         from './pages/Projects';
 import Education        from './pages/Education';
 import Experience       from './pages/Experience';
 import UserPortfolio    from './pages/UserPortfolio';
+import Contact from './pages/Contact';
 
-
-import AboutTransition      from './transitions/AboutTransition';
+// import AboutTransition      from './transitions/AboutTransition';
 import ProjectsTransition   from './transitions/ProjectsTransition';
 import ExperienceTransition from './transitions/ExperienceTransition';
 import EducationTransition  from './transitions/EducationTransition';
@@ -21,7 +21,7 @@ import './index.css';
 
 
 const TRANSITION_MAP = {
-  '/about':      AboutTransition,
+  // '/about':      AboutTransition,
   '/projects':   ProjectsTransition,
   '/experience': ExperienceTransition,
   '/education':  EducationTransition,
@@ -95,6 +95,7 @@ function AnimatedRoutes() {
           <Route path="/projects"    element={<Projects />} />
           <Route path="/experience"  element={<Experience />} />
           <Route path="/education"   element={<Education />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       )}
     </>

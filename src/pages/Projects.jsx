@@ -23,7 +23,7 @@ const PROJECTS = [
       'Room-based WebSocket architecture with live typing indicators and instant code propagation.',
       'Used React hooks (useEffect, useRef) for complex state sync via Socket.io.',
     ],
-    github: 'https://github.com/mehakmalik',   /* ← update */
+    github: 'https://github.com/mmalik2004/Live-code-studio',   /* ← update */
   },
   {
     title: 'Weather App',
@@ -31,11 +31,11 @@ const PROJECTS = [
     gradient: 'linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0284c7 100%)',
     tags: ['JavaScript', 'CSS', 'HTML', 'OpenWeather API'],
     bullets: [
-      'Clean weather dashboard with current conditions and 7-day forecast.',
+      'Clean weather dashboard with current temperature,humidity,precipitation data.',
       'Location search with real-time API calls to OpenWeather.',
       'Fully responsive layout across all screen sizes.',
     ],
-    github: 'https://github.com/mehakmalik',   /* ← update */
+    github: 'https://github.com/mmalik2004/SkyCast',   /* ← update */
   },
   {
     title: 'TypeRush',
@@ -47,7 +47,7 @@ const PROJECTS = [
       'Optimized DOM rendering to reduce input lag by ~25% for seamless real-time tracking.',
       'Responsive UI supporting 7 devices/browsers, improving user satisfaction by ~15%.',
     ],
-    github: 'https://github.com/mehakmalik',   /* ← update */
+    github: 'https://github.com/mmalik2004/TypeRush',   /* ← update */
   },
   {
     title: 'Simon Game',
@@ -59,7 +59,7 @@ const PROJECTS = [
       'Reduced average completion time by 25%; added audio cues, dark mode, responsive layout.',
       'Delivered full product lifecycle within 2 months.',
     ],
-    github: 'https://github.com/mehakmalik',   /* ← update */
+    github: 'https://github.com/mmalik2004/Simon_Game',   /* ← update */
   },
   
 ];
