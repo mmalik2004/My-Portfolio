@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: center;
   animation: rktFadeOut 0.5s ease 2.1s forwards;
+  /* Without: animation-fill-mode: forwards; the element would return to its original state after animation. */
 }
 
 @keyframes rktFadeOut {

@@ -77,7 +77,7 @@ export default function Contact() {
       );
       setStatus('success');
       setForm({ name: '', email: '', subject: '', message: '' });
-    } catch {
+    } catch  {
       setStatus('error');
     }
   };
@@ -90,7 +90,7 @@ export default function Contact() {
         <div className="section-header reveal">
           <p className="section-tag">Get In Touch</p>
           <h2 className="section-title">Contact</h2>
-          <div className="section-line" />
+          
         </div>
 
         {/* Intro line */}

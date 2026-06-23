@@ -1,56 +1,6 @@
-/* Home.jsx — Two-column layout, right side visual, no scroll hint */
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Home.css';
-
-/* Particle canvas */
-function ParticleCanvas() {
-  const ref = useRef(null);
-  useEffect(() => {
-    const canvas = ref.current;
-    const ctx = canvas.getContext('2d');
-    let W = (canvas.width = window.innerWidth);
-    let H = (canvas.height = window.innerHeight);
-    const pts = Array.from({ length: 60 }, () => ({
-      x: Math.random() * W, y: Math.random() * H,
-      r: Math.random() * 1.6 + 0.4,
-      vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35,
-      o: Math.random() * 0.4 + 0.08,
-    }));
-    let mx = W / 2, my = H / 2;
-    const onMove = (e) => { mx = e.clientX; my = e.clientY; };
-    const onResize = () => { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; };
-    window.addEventListener('mousemove', onMove);
-    window.addEventListener('resize', onResize);
-    let raf;
-    const draw = () => {
-      ctx.clearRect(0, 0, W, H);
-      pts.forEach((p) => {
-        const dx = mx - p.x, dy = my - p.y;
-        if (Math.hypot(dx, dy) < 160) { p.x += dx * 0.003; p.y += dy * 0.003; }
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0 || p.x > W) p.vx *= -1;
-        if (p.y < 0 || p.y > H) p.vy *= -1;
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(139,92,246,${p.o})`; ctx.fill();
-      });
-      for (let i = 0; i < pts.length; i++) {
-        for (let j = i + 1; j < pts.length; j++) {
-          const d = Math.hypot(pts[i].x - pts[j].x, pts[i].y - pts[j].y);
-          if (d < 110) {
-            ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y);
-            ctx.strokeStyle = `rgba(139,92,246,${0.11 * (1 - d / 110)})`;
-            ctx.lineWidth = 0.5; ctx.stroke();
-          }
-        }
-      }
-      raf = requestAnimationFrame(draw);
-    };
-    draw();
-    return () => { cancelAnimationFrame(raf); window.removeEventListener('mousemove', onMove); window.removeEventListener('resize', onResize); };
-  }, []);
-  return <canvas ref={ref} className="particle-canvas" />;
-}
 
 /* Typewriter */
 function useTypewriter(words) {
@@ -66,8 +16,11 @@ function useTypewriter(words) {
         else st.current.ci++;
       } else {
         setText(word.slice(0, ci - 1));
-        if (ci - 1 === 0) { st.current.del = false; st.current.wi = (wi + 1) % words.length; st.current.ci = 0; }
-        else st.current.ci--;
+        if (ci - 1 === 0) {
+          st.current.del = false;
+          st.current.wi = (wi + 1) % words.length;
+          st.current.ci = 0;
+        } else st.current.ci--;
       }
     }, 100);
     return () => clearInterval(id);
@@ -75,73 +28,62 @@ function useTypewriter(words) {
   return text;
 }
 
-/* Right side: space illustration with SVG astronaut */
+/* Shared astronaut SVG content — used in both desktop and mobile visual */
+function AstronautSVG() {
+  return (
+    <svg className="hero-astronaut" viewBox="0 0 200 220" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="100" cy="130" rx="52" ry="60" fill="#2d1b69" stroke="#8b5cf6" strokeWidth="2"/>
+      <circle cx="100" cy="72" r="42" fill="#1e1b4b" stroke="#8b5cf6" strokeWidth="2.5"/>
+      <ellipse cx="100" cy="72" rx="28" ry="25" fill="#0f0a2e"/>
+      <ellipse cx="90" cy="62" rx="8" ry="6" fill="rgba(139,92,246,0.5)" />
+      <ellipse cx="105" cy="58" rx="4" ry="3" fill="rgba(236,72,153,0.4)" />
+      <ellipse cx="100" cy="72" rx="28" ry="25" fill="url(#visorGradM)" />
+      <ellipse cx="54" cy="130" rx="14" ry="36" fill="#2d1b69" stroke="#8b5cf6"
+        strokeWidth="1.5" transform="rotate(-15 54 130)"/>
+      <ellipse cx="146" cy="130" rx="14" ry="36" fill="#2d1b69" stroke="#8b5cf6"
+        strokeWidth="1.5" transform="rotate(15 146 130)"/>
+      <circle cx="46"  cy="162" r="10" fill="#8b5cf6"/>
+      <circle cx="154" cy="162" r="10" fill="#8b5cf6"/>
+      <rect x="76"  y="185" width="20" height="28" rx="10" fill="#2d1b69" stroke="#8b5cf6" strokeWidth="1.5"/>
+      <rect x="104" y="185" width="20" height="28" rx="10" fill="#2d1b69" stroke="#8b5cf6" strokeWidth="1.5"/>
+      <ellipse cx="86"  cy="213" rx="14" ry="7" fill="#8b5cf6"/>
+      <ellipse cx="114" cy="213" rx="14" ry="7" fill="#8b5cf6"/>
+      <rect x="86" y="118" width="28" height="20" rx="4" fill="#8b5cf6" opacity="0.7"/>
+      <rect x="89" y="121" width="22" height="14" rx="3" fill="#0a0a0f" opacity="0.8"/>
+      <rect x="120" y="105" width="22" height="36" rx="6" fill="#1e1b4b" stroke="#ec4899" strokeWidth="1.5"/>
+      <defs>
+        <radialGradient id="visorGradM" cx="40%" cy="40%">
+          <stop offset="0%"   stopColor="#8b5cf6" stopOpacity="0.15"/>
+          <stop offset="100%" stopColor="#ec4899" stopOpacity="0.05"/>
+        </radialGradient>
+      </defs>
+    </svg>
+  );
+}
+
+/* Desktop right visual */
 function HeroVisual() {
   return (
     <div className="hero-visual">
-
-      {/* Floating code tags */}
       <div className="hero-code-tag hero-code-tag-1">{'<Software Engineer />'}</div>
       <div className="hero-code-tag hero-code-tag-2">{'{ DSA: 900+ }'}</div>
       <div className="hero-code-tag hero-code-tag-3">{'useState()'}</div>
-
-      {/* Planet */}
       <div className="hero-planet">
-        {/* Orbiting dots */}
-        <div className="orbit-dot orbit-dot-1" style={{ position:'absolute', top:'50%', left:'50%', transformOrigin:'0 0' }} />
-        <div className="orbit-dot orbit-dot-2" style={{ position:'absolute', top:'50%', left:'50%', transformOrigin:'0 0' }} />
+        <div className="orbit-dot orbit-dot-1"
+          style={{ position:'absolute', top:'50%', left:'50%', transformOrigin:'0 0' }} />
+        <div className="orbit-dot orbit-dot-2"
+          style={{ position:'absolute', top:'50%', left:'50%', transformOrigin:'0 0' }} />
       </div>
-
-      {/* Astronaut SVG */}
-      <svg className="hero-astronaut" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* Body */}
-        <ellipse cx="100" cy="130" rx="52" ry="60" fill="#2d1b69" stroke="#8b5cf6" strokeWidth="2"/>
-        {/* Helmet */}
-        <circle cx="100" cy="72" r="42" fill="#1e1b4b" stroke="#8b5cf6" strokeWidth="2.5"/>
-        {/* Visor */}
-        <ellipse cx="100" cy="72" rx="28" ry="25" fill="#0f0a2e"/>
-        {/* Visor shine */}
-        <ellipse cx="90" cy="62" rx="8" ry="6" fill="rgba(139,92,246,0.5)" />
-        <ellipse cx="105" cy="58" rx="4" ry="3" fill="rgba(236,72,153,0.4)" />
-        {/* Visor glow */}
-        <ellipse cx="100" cy="72" rx="28" ry="25" fill="url(#visorGrad)" />
-        {/* Left arm */}
-        <ellipse cx="54" cy="130" rx="14" ry="36" rx2="14" fill="#2d1b69" stroke="#8b5cf6" strokeWidth="1.5" transform="rotate(-15 54 130)"/>
-        {/* Right arm */}
-        <ellipse cx="146" cy="130" rx="14" ry="36" fill="#2d1b69" stroke="#8b5cf6" strokeWidth="1.5" transform="rotate(15 146 130)"/>
-        {/* Left glove */}
-        <circle cx="46" cy="162" r="10" fill="#8b5cf6"/>
-        {/* Right glove */}
-        <circle cx="154" cy="162" r="10" fill="#8b5cf6"/>
-        {/* Left leg */}
-        <rect x="76" y="185" width="20" height="28" rx="10" fill="#2d1b69" stroke="#8b5cf6" strokeWidth="1.5"/>
-        {/* Right leg */}
-        <rect x="104" y="185" width="20" height="28" rx="10" fill="#2d1b69" stroke="#8b5cf6" strokeWidth="1.5"/>
-        {/* Boots */}
-        <ellipse cx="86" cy="213" rx="14" ry="7" fill="#8b5cf6"/>
-        <ellipse cx="114" cy="213" rx="14" ry="7" fill="#8b5cf6"/>
-        {/* Chest badge */}
-        <rect x="86" y="118" width="28" height="20" rx="4" fill="#8b5cf6" opacity="0.7"/>
-        <rect x="89" y="121" width="22" height="14" rx="3" fill="#0a0a0f" opacity="0.8"/>
-        {/* Backpack */}
-        <rect x="120" y="105" width="22" height="36" rx="6" fill="#1e1b4b" stroke="#ec4899" strokeWidth="1.5"/>
-        <defs>
-          <radialGradient id="visorGrad" cx="40%" cy="40%">
-            <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.15"/>
-            <stop offset="100%" stopColor="#ec4899" stopOpacity="0.05"/>
-          </radialGradient>
-        </defs>
-      </svg>
-
-      {/* Star particles */}
+      <AstronautSVG />
       {[
-        { s:3, t:10,  l:60,  d:0    },
-        { s:2, t:60,  l:180, d:0.5  },
-        { s:4, t:160, l:80,  d:1    },
-        { s:2, t:300, l:160, d:1.5  },
-        { s:3, t:380, l:30,  d:0.8  },
-        { s:2, t:250, l:340, d:2    },
-        { s:3, t:120, l:320, d:0.3  },
+        { s:3, t:10,  l:60,  d:0   },
+        { s:2, t:60,  l:180, d:0.5 },
+        { s:4, t:160, l:80,  d:1   },
+        { s:2, t:300, l:160, d:1.5 },
+        { s:3, t:380, l:30,  d:0.8 },
+        { s:2, t:250, l:340, d:2   },
+        { s:3, t:120, l:320, d:0.3 },
       ].map((s, i) => (
         <div key={i} className="hero-star" style={{
           width: s.s, height: s.s,
@@ -154,16 +96,85 @@ function HeroVisual() {
   );
 }
 
+/* Mobile visual — smaller, shown below social icons */
+/* Mobile visual — fills space below social icons, mirrors desktop layout */
+function HeroMobileVisual() {
+  return (
+    <div className="hero-mobile-visual">
+      {/* Planet with orbit dots */}
+      <div className="hero-planet">
+        <div
+          className="orbit-dot orbit-dot-1 orbit-dot-mobile"
+          style={{ position: 'absolute', top: '50%', left: '50%', transformOrigin: '0 0' }}
+        />
+        <div
+          className="orbit-dot orbit-dot-2 orbit-dot-mobile"
+          style={{ position: 'absolute', top: '50%', left: '50%', transformOrigin: '0 0' }}
+        />
+      </div>
+
+      {/* Astronaut */}
+      <AstronautSVG />
+
+      {/* Stars only — no code tags */}
+      {[
+        { s: 2, t: 20,  l: 20,  d: 0   },
+        { s: 2, t: 55,  l: 250, d: 0.5 },
+        { s: 3, t: 150, l: 40,  d: 1   },
+        { s: 2, t: 230, l: 210, d: 1.5 },
+        { s: 2, t: 90,  l: 270, d: 0.8 },
+        { s: 1, t: 190, l: 70,  d: 0.3 },
+      ].map((s, i) => (
+        <div
+          key={i}
+          className="hero-star"
+          style={{
+            width: s.s, height: s.s,
+            top: s.t, left: s.l,
+            animationDelay: `${s.d}s`,
+            animationDuration: `${2.5 + s.d}s`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+/* Social icons */
+const GHIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.38 7.86 10.9.57.1.78-.25.78-.55v-1.93C5.74 21 5.07 18.96 5.07 18.96c-.52-1.33-1.27-1.68-1.27-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.27-5.23-5.67 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18A10.95 10.95 0 0 1 12 7.3c.97 0 1.95.13 2.86.38 2.18-1.49 3.14-1.18 3.14-1.18.63 1.58.24 2.75.12 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.06.78 2.13v3.17c0 .3.2.66.79.55C20.22 21.37 23.5 17.08 23.5 12 23.5 5.73 18.27.5 12 .5z"/>
+  </svg>
+);
+
+const LIIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM3.56 20.45h3.56V9H3.56v11.45zM22.22 0H1.78C.8 0 0 .78 0 1.74v20.52C0 23.22.8 24 1.78 24h20.44C23.2 24 24 23.22 24 22.26V1.74C24 .78 23.2 0 22.22 0z"/>
+  </svg>
+);
+
+const LCIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H19.19a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
+  </svg>
+);
+
+const MOBILE_SOCIALS = [
+  { icon: <GHIcon />, href: 'https://github.com/mmalik2004',                 label: 'GitHub'   },
+  { icon: <LIIcon />, href: 'https://linkedin.com/in/mehak-malik-455b9b258', label: 'LinkedIn' },
+  { icon: <LCIcon />, href: 'https://leetcode.com/u/malik01',                label: 'LeetCode' },
+];
+
 const STATS = [
-  { n: '900+',    l: 'DSA Problems'  },
-  { n: '8.40',    l: 'CGPA'          },
+  { n: '900+',    l: 'DSA Problems'   },
+  { n: '8.40',    l: 'CGPA'           },
   { n: 'AIR 21K', l: 'JEE Mains 2022' },
 ];
 
 export default function Home() {
   const navigate = useNavigate();
   const typed = useTypewriter([
-    'Software Developer',
+    'Full Stack Developer',
     'React Enthusiast',
     'DSA Problem Solver',
     'CS Engineering Student',
@@ -171,13 +182,10 @@ export default function Home() {
 
   return (
     <section className="home-hero">
-      <ParticleCanvas />
-      <div className="grid-overlay" />
-
       <div className="container">
         <div className="hero-layout">
 
-          {/* LEFT: Text */}
+          {/* LEFT: Text content */}
           <div className="home-content reveal visible">
             <div className="hero-badge">
               <span className="hero-badge-dot" />
@@ -201,10 +209,15 @@ export default function Home() {
             </p>
 
             <div className="hero-btns">
-              <button className="btn-primary" onClick={() => navigate('/projects')}>View Projects</button>
-              <button className="btn-outline"  onClick={() => navigate('/about')}>About Me</button>
+              <button className="btn-primary" onClick={() => navigate('/projects')}>
+                View Projects
+              </button>
+              <button className="btn-outline" onClick={() => navigate('/about')}>
+                About Me
+              </button>
             </div>
 
+            {/* Stats */}
             <div className="hero-stats">
               {STATS.map(({ n, l }, i) => (
                 <div key={l} style={{ display: 'flex', alignItems: 'center' }}>
@@ -216,9 +229,29 @@ export default function Home() {
                 </div>
               ))}
             </div>
+
+            {/* Social icons — mobile only */}
+            <div className="hero-social-mobile">
+              {MOBILE_SOCIALS.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hero-social-btn"
+                  aria-label={s.label}
+                >
+                  {s.icon}
+                </a>
+              ))}
+            </div>
+
+            {/* Mobile visual — fills empty space below social icons */}
+            <HeroMobileVisual />
+
           </div>
 
-          {/* RIGHT: Space illustration */}
+          {/* RIGHT: Desktop visual */}
           <HeroVisual />
 
         </div>

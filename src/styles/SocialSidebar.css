@@ -1,8 +1,8 @@
 /* ===================================================
-   SocialSidebar.css  —  Fixed left social icons
+   SocialSidebar.css — desktop only
+   Mobile social links are handled in Home.jsx
    =================================================== */
 
-/* Vertical bar fixed on the left, vertically centered */
 .social-sidebar {
   position: fixed;
   left: 24px;
@@ -15,7 +15,7 @@
   gap: 18px;
 }
 
-/* Thin vertical line above and below icons */
+/* Vertical lines */
 .social-sidebar::before,
 .social-sidebar::after {
   content: '';
@@ -25,11 +25,11 @@
   background: linear-gradient(to bottom, transparent, rgba(139,92,246,0.5));
 }
 .social-sidebar::before { order: -1; }
-.social-sidebar::after  {
+.social-sidebar::after {
   background: linear-gradient(to top, transparent, rgba(139,92,246,0.5));
 }
 
-/* Each icon link */
+/* Icon links */
 .social-icon {
   display: flex;
   align-items: center;
@@ -44,11 +44,13 @@
   position: relative;
 }
 
-/* Tooltip on hover */
+/* Tooltip */
 .social-icon::after {
   content: attr(data-tooltip);
   position: absolute;
   left: 52px;
+  top: 50%;
+  transform: translateY(-50%) translateX(-6px);
   background: rgba(139,92,246,0.9);
   color: #fff;
   font-size: 11px;
@@ -58,15 +60,13 @@
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
-  transform: translateX(-6px);
   transition: opacity 0.2s, transform 0.2s;
 }
 .social-icon:hover::after {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(-50%) translateX(0);
 }
 
-/* Hover glow */
 .social-icon:hover {
   transform: translateY(-4px) scale(1.12);
   background: rgba(139,92,246,0.18);
@@ -75,44 +75,9 @@
   box-shadow: 0 0 20px rgba(139,92,246,0.35);
 }
 
-/* SVG icon sizing */
 .social-icon svg { width: 18px; height: 18px; }
 
-/* =====================
-   RESPONSIVE — SocialSidebar
-   ===================== */
-
+/* Hide completely on mobile — social links shown in Home.jsx instead */
 @media (max-width: 768px) {
-  /* Move sidebar to bottom horizontal bar on mobile */
-  .social-sidebar {
-    top: auto;
-    bottom: 90px;
-    left: 50%;
-    transform: translateX(-50%);
-    flex-direction: row;
-    gap: 12px;
-    background: rgba(13,13,26,0.88);
-    border: 1px solid rgba(139,92,246,0.2);
-    border-radius: 999px;
-    padding: 8px 16px;
-    backdrop-filter: blur(16px);
-  }
-
-  /* Hide the vertical lines */
-  .social-sidebar::before,
-  .social-sidebar::after { display: none; }
-
-  /* Tooltip now appears above */
-  .social-icon::after {
-    left: 50%;
-    top: auto;
-    bottom: 48px;
-    transform: translateX(-50%) translateY(6px);
-  }
-  .social-icon:hover::after {
-    transform: translateX(-50%) translateY(0);
-  }
-
-  .social-icon { width: 36px; height: 36px; }
-  .social-icon svg { width: 16px; height: 16px; }
+  .social-sidebar { display: none; }
 }

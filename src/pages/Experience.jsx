@@ -15,7 +15,7 @@ const EXPERIENCES = [
       'Contributed to debugging, testing, and code review processes while working in an Agile development environment',
       'Improved application responsiveness and ensured compatibility across multiple browsers and screen sizes.',
     ],
-    tags: ['React', 'JavaScript', 'Responsive Design', ],
+    tags: ['React', 'JavaScript', 'Responsive Design', 'Advanced CSS'],
     dotActive: true,
   },
 ];
@@ -91,8 +91,7 @@ export default function Experience() {
           ))}
         </div>
 
-        <p className="exp-coming">More experience coming soon...</p>
-
+        
       </div>
     </div>
   );

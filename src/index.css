@@ -1,27 +1,35 @@
-/* index.css — NEW THEME: Deep indigo/violet gradient bg */
+/* index.css */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: 'Inter', sans-serif;
-  /* NEW BG: deep purple/indigo gradient like reference image */
   background: linear-gradient(135deg, #0d0d1a 0%, #120d2e 40%, #1a0a2e 70%, #0d0d1a 100%);
   background-attachment: fixed;
   color: #f1f5f9;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
 }
 
 html { scroll-behavior: smooth; }
 
-::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar       { width: 4px; }
 ::-webkit-scrollbar-track { background: #0d0d1a; }
 ::-webkit-scrollbar-thumb { background: linear-gradient(#8b5cf6, #ec4899); border-radius: 99px; }
 
-.container { max-width: 1060px; margin: 0 auto; padding: 0 28px; }
-.page      { padding-top: 100px; padding-bottom: 100px; position: relative; z-index: 1; }
+.container {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.page {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  position: relative;
+  z-index: 1;
+}
 
 /* Section header */
 .section-header { text-align: center; margin-bottom: 60px; }
@@ -46,7 +54,7 @@ html { scroll-behavior: smooth; }
 }
 .btn-outline:hover { background: rgba(139,92,246,0.18); border-color: #8b5cf6; transform: translateY(-2px); }
 
-/* Glassmorphism — brighter on new bg */
+/* Glass */
 .glass {
   background: rgba(255,255,255,0.06);
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
@@ -54,19 +62,19 @@ html { scroll-behavior: smooth; }
   border-radius: 20px;
 }
 
-/* Reveal animation */
-.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+/* Reveal */
+.reveal         { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* Keyframes */
-@keyframes float    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
-@keyframes pulse    { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(1.4)} }
-@keyframes blink    { 0%,100%{opacity:1} 50%{opacity:0} }
+@keyframes float    { 0%,100%{transform:translateY(0)}       50%{transform:translateY(-12px)} }
+@keyframes pulse    { 0%,100%{opacity:1;transform:scale(1)}  50%{opacity:0.4;transform:scale(1.4)} }
+@keyframes blink    { 0%,100%{opacity:1}                     50%{opacity:0} }
 @keyframes glow     { 0%,100%{box-shadow:0 0 20px rgba(139,92,246,0.4)} 50%{box-shadow:0 0 42px rgba(236,72,153,0.6)} }
-@keyframes shimmer  { 0%{background-position:200% 50%} 100%{background-position:-200% 50%} }
+@keyframes shimmer  { 0%{background-position:200% 50%}       100%{background-position:-200% 50%} }
 @keyframes rotate   { to{transform:rotate(360deg)} }
-@keyframes gradMove { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-@keyframes orbitAnim { from{transform:rotate(0deg) translateX(160px) rotate(0deg)} to{transform:rotate(360deg) translateX(160px) rotate(-360deg)} }
+@keyframes gradMove { 0%{background-position:0% 50%}         50%{background-position:100% 50%}  100%{background-position:0% 50%} }
+@keyframes orbitAnim{ from{transform:rotate(0deg) translateX(160px) rotate(0deg)} to{transform:rotate(360deg) translateX(160px) rotate(-360deg)} }
 @keyframes twinkle  { 0%,100%{opacity:0.15;transform:scale(1)} 50%{opacity:0.8;transform:scale(1.5)} }
 
 /* =====================
@@ -74,17 +82,15 @@ html { scroll-behavior: smooth; }
    ===================== */
 
 @media (max-width: 768px) {
-  .container { padding: 0 18px; }
-  .page      { padding-top: 80px; padding-bottom: 72px; }
-
+  .container      { padding: 0 18px; }
+  .page           { padding-top: 80px; padding-bottom: 72px; }
   .section-title  { font-size: 28px; }
   .section-header { margin-bottom: 40px; }
-
-  .btn-primary { padding: 11px 22px; font-size: 13px; }
-  .btn-outline { padding: 10px 20px; font-size: 13px; }
+  .btn-primary    { padding: 11px 22px; font-size: 13px; }
+  .btn-outline    { padding: 10px 20px; font-size: 13px; }
 }
 
 @media (max-width: 480px) {
-  .container  { padding: 0 16px; }
+  .container     { padding: 0 16px; }
   .section-title { font-size: 24px; }
 }

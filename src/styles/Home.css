@@ -1,25 +1,13 @@
-/* Home.css — Fixed: content starts from left, right side has astronaut illustration */
+/* Home.css */
 
 .home-hero {
-  min-height: 100vh;
   display: flex;
   align-items: center;
   position: relative;
   padding-top: 68px;
   overflow: hidden;
-}
-
-.particle-canvas {
-  position: fixed; top: 0; left: 0;
-  z-index: 0; pointer-events: none;
-}
-
-.grid-overlay {
-  position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background-image:
-    linear-gradient(rgba(139,92,246,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139,92,246,0.04) 1px, transparent 1px);
-  background-size: 52px 52px;
+  /* Desktop: full viewport height */
+  min-height: 100vh;
 }
 
 /* Two column hero layout */
@@ -28,43 +16,56 @@
   grid-template-columns: 1fr 420px;
   gap: 48px;
   align-items: center;
-  position: relative; z-index: 1;
+  position: relative;
+  z-index: 1;
   width: 100%;
 }
 
-/* LEFT: text starts at container left edge (no extra padding) */
 .home-content {
-  position: relative; z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 
 /* Badge */
 .hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   background: rgba(139,92,246,0.12);
   border: 1px solid rgba(139,92,246,0.3);
-  border-radius: 999px; padding: 6px 18px; margin-bottom: 24px;
+  border-radius: 999px;
+  padding: 6px 18px;
+  margin-bottom: 24px;
   font-family: 'Inter', sans-serif;
-  font-size: 13px; font-weight: 500; color: #a78bfa;
+  font-size: 13px;
+  font-weight: 500;
+  color: #a78bfa;
 }
 
 .hero-badge-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: #10b981; box-shadow: 0 0 10px #10b981;
-  flex-shrink: 0; animation: pulse 2s ease-in-out infinite;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px #10b981;
+  flex-shrink: 0;
+  animation: pulse 2s ease-in-out infinite;
 }
 
 /* Name */
 .hero-name {
   font-family: 'Inter', sans-serif;
   font-size: clamp(40px, 5vw, 58px);
-  font-weight: 800; line-height: 1.1;
-  margin-bottom: 16px; letter-spacing: -1.5px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  letter-spacing: -1.5px;
 }
 
 .hero-name-grad {
   background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 55%, #f97316 100%);
   background-size: 200% auto;
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: shimmer 4s linear infinite;
   display: inline;
@@ -73,8 +74,12 @@
 /* Typewriter */
 .hero-typed {
   font-family: 'Inter', sans-serif;
-  font-size: 18px; font-weight: 400; color: #94a3b8;
-  margin-bottom: 20px; min-height: 30px; letter-spacing: -0.2px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #94a3b8;
+  margin-bottom: 20px;
+  min-height: 30px;
+  letter-spacing: -0.2px;
 }
 .hero-typed-text   { color: #c4b5fd; }
 .hero-typed-cursor { color: #8b5cf6; animation: blink 1s step-end infinite; }
@@ -82,36 +87,66 @@
 /* Bio */
 .hero-bio {
   font-family: 'Inter', sans-serif;
-  font-size: 15px; color: #64748b;
-  line-height: 1.8; margin-bottom: 32px; max-width: 500px;
+  font-size: 15px;
+  color: #c7cacf;
+  line-height: 1.8;
+  margin-bottom: 32px;
+  max-width: 500px;
 }
 
 /* Buttons */
-.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
+.hero-btns {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 44px;
+}
 
 /* Stats */
-.hero-stats { display: flex; align-items: center; }
+.hero-stats {
+  display: flex;
+  align-items: center;
+}
 
-.hero-stat { display: flex; flex-direction: column; gap: 5px; padding: 0 24px; }
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0 24px;
+}
 .hero-stat:first-child { padding-left: 0; }
 
 .stat-number {
   font-family: 'Inter', sans-serif;
-  font-size: 22px; font-weight: 800; line-height: 1;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
   background: linear-gradient(135deg, #8b5cf6, #ec4899);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text; white-space: nowrap;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  white-space: nowrap;
 }
 
 .stat-label {
   font-family: 'Inter', sans-serif;
-  font-size: 11px; font-weight: 400;
-  color: #475569; white-space: nowrap; line-height: 1;
+  font-size: 11px;
+  font-weight: 400;
+  color: #c7cacf;
+  white-space: nowrap;
+  line-height: 1;
 }
 
-.stat-divider { width: 1px; height: 30px; flex-shrink: 0; background: rgba(255,255,255,0.08); }
+.stat-divider {
+  width: 1px; height: 30px;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.08);
+}
 
-/* ── RIGHT: Illustration / astronaut visual ── */
+/* Social row — hidden on desktop */
+.hero-social-mobile { display: none; }
+
+/* ── RIGHT visual ── */
 .hero-visual {
   position: relative;
   display: flex;
@@ -120,19 +155,16 @@
   height: 460px;
 }
 
-/* Large glowing planet */
 .hero-planet {
-  width: 280px; height: 280px; border-radius: 50%;
+  width: 280px; height: 280px;
+  border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, #4c1d95, #1e1b4b 60%, #0a0a0f);
   border: 1.5px solid rgba(139,92,246,0.35);
-  box-shadow:
-    0 0 60px rgba(139,92,246,0.25),
-    inset 0 0 60px rgba(139,92,246,0.1);
+  box-shadow: 0 0 60px rgba(139,92,246,0.25), inset 0 0 60px rgba(139,92,246,0.1);
   position: relative;
   animation: float 5s ease-in-out infinite;
 }
 
-/* Ring around planet */
 .hero-planet::before {
   content: '';
   position: absolute;
@@ -143,7 +175,6 @@
   transform: translate(-50%, -50%) rotateX(72deg);
 }
 
-/* Astronaut SVG illustration */
 .hero-astronaut {
   position: absolute;
   width: 160px; height: 160px;
@@ -153,7 +184,6 @@
   filter: drop-shadow(0 0 20px rgba(139,92,246,0.4));
 }
 
-/* Orbiting dot */
 .orbit-dot {
   position: absolute;
   width: 12px; height: 12px;
@@ -163,22 +193,22 @@
 .orbit-dot-1 { background: #8b5cf6; box-shadow: 0 0 12px #8b5cf6; }
 .orbit-dot-2 { background: #ec4899; box-shadow: 0 0 12px #ec4899; animation-delay: -3s; animation-duration: 8s; }
 
-/* Floating code snippets */
 .hero-code-tag {
   position: absolute;
   background: rgba(139,92,246,0.12);
   border: 1px solid rgba(139,92,246,0.3);
-  border-radius: 10px; padding: 8px 14px;
+  border-radius: 10px;
+  padding: 8px 14px;
   font-family: 'Monaco', 'Courier New', monospace;
-  font-size: 12px; color: #c4b5fd;
+  font-size: 12px;
+  color: #c4b5fd;
   backdrop-filter: blur(8px);
   white-space: nowrap;
 }
-.hero-code-tag-1 { top: 40px;  left: 10px;  animation: float 5s ease-in-out infinite; }
-.hero-code-tag-2 { bottom: 80px; right: 20px; animation: float 4.5s ease-in-out infinite; animation-delay: 1s; }
-.hero-code-tag-3 { top: 200px; left: -10px; animation: float 6s ease-in-out infinite; animation-delay: 0.7s; }
+.hero-code-tag-1 { top: 40px;    left: 10px;   animation: float 5s   ease-in-out infinite; }
+.hero-code-tag-2 { bottom: 80px; right: 20px;  animation: float 4.5s ease-in-out infinite; animation-delay: 1s; }
+.hero-code-tag-3 { top: 200px;   left: -10px;  animation: float 6s   ease-in-out infinite; animation-delay: 0.7s; }
 
-/* Small star particles on right */
 .hero-star {
   position: absolute;
   border-radius: 50%;
@@ -187,68 +217,191 @@
 }
 
 @keyframes orbitAnim {
-  from { transform: rotate(0deg) translateX(160px) rotate(0deg); }
+  from { transform: rotate(0deg)   translateX(160px) rotate(0deg); }
   to   { transform: rotate(360deg) translateX(160px) rotate(-360deg); }
 }
-
 @keyframes twinkle {
   0%,100% { opacity: 0.2; transform: scale(1); }
-  50%      { opacity: 1;   transform: scale(1.4); }
+  50%     { opacity: 1;   transform: scale(1.4); }
+}
+.hero-mobile-visual {
+  display: none;
+}
+/* Mobile orbit — smaller radius to match smaller planet */
+@keyframes orbitAnimMobile {
+  from { transform: rotate(0deg)   translateX(120px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
 }
 /* =====================
-   RESPONSIVE — Home
+   RESPONSIVE
    ===================== */
 
 @media (max-width: 1024px) {
-  .hero-layout {
-    grid-template-columns: 1fr 340px;
-    gap: 32px;
-  }
-  .hero-visual { height: 380px; }
-  .hero-planet { width: 230px; height: 230px; }
+  .hero-layout         { grid-template-columns: 1fr 340px; gap: 32px; }
+  .hero-visual         { height: 380px; }
+  .hero-planet         { width: 230px; height: 230px; }
   .hero-planet::before { width: 310px; height: 65px; }
-  .hero-astronaut { width: 130px; height: 130px; }
+  .hero-astronaut      { width: 130px; height: 130px; }
 }
 
 @media (max-width: 768px) {
-  .home-hero { padding-top: 80px; align-items: flex-start; }
+  .home-hero {
+    min-height: unset !important;
+    height: auto !important;
+    padding-top: 76px;
+    padding-bottom: 0 !important;
+    align-items: flex-start;
+  }
 
   .hero-layout {
     grid-template-columns: 1fr;
     gap: 0;
   }
 
-  /* Hide the right visual on mobile */
-  .hero-visual { display: none; }
+  .hero-visual { display: none !important; }
 
-  .home-content { padding-top: 20px; }
-
-  .hero-name {
-    font-size: clamp(36px, 10vw, 52px);
-    letter-spacing: -1px;
+  .home-content {
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 0;
+    /* Critical — allow orbit dots to show outside bounds */
+    overflow: visible;
   }
 
-  .hero-typed { font-size: 16px; }
+  .hero-name   { font-size: clamp(36px, 10vw, 52px); letter-spacing: -1px; }
+  .hero-typed  { font-size: 16px; min-height: 24px; }
+  .hero-bio    { font-size: 14px; max-width: 100%; margin-bottom: 20px; }
+  .hero-btns   { margin-bottom: 20px; }
 
-  .hero-bio {
-    font-size: 14px;
-    max-width: 100%;
-  }
-
-  .hero-btns { margin-bottom: 32px; }
-
-  .hero-stats { flex-wrap: wrap; gap: 0; }
-  .hero-stat  { padding: 0 16px; }
+  .hero-stats            { flex-wrap: wrap; }
+  .hero-stat             { padding: 0 14px; }
   .hero-stat:first-child { padding-left: 0; }
-  .stat-number { font-size: 18px; }
+  .stat-number           { font-size: 18px; }
+
+  /* Social icons */
+  .hero-social-mobile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+
+  .hero-social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(139,92,246,0.35);
+    color: #c7cacf;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .hero-social-btn:hover {
+    background: rgba(139,92,246,0.2);
+    border-color: rgba(139,92,246,0.6);
+    color: #c4b5fd;
+    transform: translateY(-2px);
+    box-shadow: 0 0 14px rgba(139,92,246,0.4);
+  }
+  .hero-social-btn svg { width: 17px; height: 17px; }
+
+  /* Mobile visual wrapper */
+  .hero-mobile-visual {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 360px;
+  position: relative;
+  margin-top: 20px;
+  overflow: visible;
+}
+
+  /* Planet — larger to fill space */
+  .hero-mobile-visual .hero-planet {
+    width: 210px;
+    height: 210px;
+    /* re-center planet */
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    animation: float 5s ease-in-out infinite;
+  }
+
+  /* Ring around planet — proportional */
+  .hero-mobile-visual .hero-planet::before {
+    width: 280px;
+    height: 58px;
+  }
+
+  /* Orbit dots — use smaller radius animation */
+  .hero-mobile-visual .orbit-dot-mobile {
+    width: 10px;
+    height: 10px;
+    animation: none;
+  }
+  .hero-mobile-visual .orbit-dot-1.orbit-dot-mobile {
+    animation: orbitAnimMobile 6s linear infinite;
+  }
+  .hero-mobile-visual .orbit-dot-2.orbit-dot-mobile {
+    animation: orbitAnimMobile 8s linear infinite;
+    animation-delay: -4s;
+  }
+
+  /* Astronaut — tucked close to planet, right side */
+  .hero-mobile-visual .hero-astronaut {
+    width: 110px;
+    height: 110px;
+    
+    position: absolute;
+
+    top: 55px;
+    left: calc(43% + 30px);
+    animation: float 4s ease-in-out infinite;
+    animation-delay: 0.5s;
+    filter: drop-shadow(0 0 20px rgba(139,92,246,0.4));
+  }
+
+  /* Hide code tags on mobile */
+  .hero-mobile-visual .hero-code-tag {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
-  .hero-badge { font-size: 11px; padding: 5px 14px; }
-  .hero-name  { font-size: clamp(32px, 9vw, 44px); }
-  .hero-bio   { font-size: 13px; }
-  .hero-stats { gap: 4px 0; }
-  .stat-number { font-size: 16px; }
-  .stat-label  { font-size: 10px; }
-  .hero-stat   { padding: 0 12px; }
+  .home-hero             { padding-top: 72px; }
+  .hero-badge            { font-size: 11px; padding: 5px 14px; }
+  .hero-name             { font-size: clamp(30px, 9vw, 42px); }
+  .hero-bio              { font-size: 13px; }
+  .hero-stats            { gap: 4px 0; }
+  .stat-number           { font-size: 16px; }
+  .stat-label            { font-size: 10px; }
+  .hero-stat             { padding: 0 10px; }
+  .hero-stat:first-child { padding-left: 0; }
+  .hero-social-mobile    { margin-top: 16px; gap: 10px; }
+  .hero-social-btn       { width: 34px; height: 34px; }
+
+  .hero-mobile-visual { height: 320px; margin-top: 14px; }
+
+  .hero-mobile-visual .hero-planet {
+    width: 180px;
+    height: 180px;
+    top: 35%;
+    left: 27%;
+  }
+  .hero-mobile-visual .hero-planet::before {
+    width: 240px;
+    height: 50px;
+  }
+  .hero-mobile-visual .hero-astronaut {
+    width: 90px;
+    height: 90px;
+    top: 75px;
+    left: calc(43% + 35px);
+  }
 }
+

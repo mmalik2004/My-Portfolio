@@ -4,10 +4,11 @@
 .contact-intro {
   font-family: 'Inter', sans-serif;
   font-size: 15px;
-  color: #64748b;
+  color: #c7cacf;
   line-height: 1.85;
-  margin-bottom: 36px;
+  margin: 0 auto 36px;
   max-width: 600px;
+  text-align: center;
 }
 
 /* Form card — full width centered */

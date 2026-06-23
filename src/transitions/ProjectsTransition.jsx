@@ -7,7 +7,7 @@ export default function ProjectsTransition({ onDone }) {
     return () => clearTimeout(timer);
   }, [onDone]);
 
-  const particles = Array.from({ length: 28 }).map((_, i) => ({
+  const particles = Array.from({ length: 28 }).map((_, i) => ({ //28 spark  particles
     left:   `${44 + (Math.random() - 0.5) * 12}%`,
     bottom: `${18 + Math.random() * 8}%`,
     animationDelay:    `${0.2 + i * 0.05}s`,
@@ -19,7 +19,7 @@ export default function ProjectsTransition({ onDone }) {
       : i % 3 === 1
       ? '#f97316'
       : '#fbbf24',
-    '--drift': `${(Math.random() - 0.5) * 90}px`,
+    '--drift': `${(Math.random() - 0.5) * 90}px`, //particle moves left/right during animation.
   }));
 
   return (
@@ -124,3 +124,6 @@ export default function ProjectsTransition({ onDone }) {
     </div>
   );
 }
+// After animation finishes:
+// hide transition
+// show projects page

@@ -98,7 +98,7 @@
 
 .about-bio p {
   font-family: 'Inter', sans-serif;
-  font-size: 14px; font-weight: 400; color: #64748b;
+  font-size: 14px; font-weight: 400; color: #f1f5f9;
   line-height: 1.85; margin-bottom: 14px;
 }
 
@@ -186,7 +186,7 @@
   padding: 7px 14px; border-radius: 999px;
   font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
   background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-  color: #cbd5e1; cursor: default; transition: all 0.25s;
+  color: #f1f5f9; cursor: default; transition: all 0.25s;
   position: relative; overflow: hidden;
 }
 .skill-chip::after {

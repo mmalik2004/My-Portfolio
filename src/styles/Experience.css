@@ -122,14 +122,14 @@
 
 .exp-period {
   font-family: 'Inter', sans-serif;
-  font-size: 12px; color: #475569; margin-bottom: 16px;
+  font-size: 12px; color: #c7cacf; margin-bottom: 16px;
 }
 
 /* Bullet points */
 .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .exp-bullet {
   font-family: 'Inter', sans-serif;
-  font-size: 13px; color: #64748b;
+  font-size: 13px; color: #c7cacf;
   padding-left: 18px; position: relative; line-height: 1.65;
 }
 .exp-bullet::before {

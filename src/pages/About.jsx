@@ -1,9 +1,7 @@
-/* ===================================================
-   About.jsx  —  Bio + interactive skill chips
-   =================================================== */
+
 import '../styles/About.css';
 
-/* ── Skill data (from Mehak's resume) ── */
+
 const SKILL_GROUPS = [
   {
     title: 'Languages',
