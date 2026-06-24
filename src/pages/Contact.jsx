@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import '../styles/Contact.css';
+import mehakAvatarSrc from '../assets/avatar.jpg';
 
+
+/* ── Icons ── */
 const EmailIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
     strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -32,6 +35,18 @@ const SendIcon = () => (
     <path d="M22 2 11 13"/>
   </svg>
 );
+
+function MehakAvatar() {
+  return (
+    <div className="contact-avatar-wrap">
+      <img
+        src={mehakAvatarSrc}
+        alt="Mehak waving"
+        className="contact-avatar-img"
+      />
+    </div>
+  );
+}
 
 const EMAILJS_SERVICE_ID  = 'service_7hpf0zl';
 const EMAILJS_TEMPLATE_ID = 'template_iw22vu9';
@@ -77,7 +92,7 @@ export default function Contact() {
       );
       setStatus('success');
       setForm({ name: '', email: '', subject: '', message: '' });
-    } catch  {
+    } catch {
       setStatus('error');
     }
   };
@@ -88,111 +103,116 @@ export default function Contact() {
 
         {/* Header */}
         <div className="section-header reveal">
-          <p className="section-tag">Get In Touch</p>
-          <h2 className="section-title">Contact</h2>
-          
+          {/* <p className="section-tag">Get In Touch</p> */}
+          {/* <h2 className="section-title">Contact</h2> */}
+          {/* <div className="section-line" /> */}
         </div>
 
-        {/* Intro line */}
-        <p className="contact-intro reveal">
-          I am currently open to new opportunities. Whether you have a question,
-          a project idea, or just want to say hi — my inbox is always open.
-        </p>
+        {/* Two column layout */}
+        <div className="contact-layout">
 
-        {/* Form card — full width */}
-        <div className="glass contact-form-card reveal">
+          {/* LEFT — info + avatar */}
+          <div className="contact-left reveal">
+            <h3 className="contact-left-heading">Get in touch</h3>
+            <p className="contact-intro">
+              I am currently open to new opportunities. Whether you have a
+              question, a project idea, or just want to say hi — my inbox
+              is always open.
+            </p>
 
-          <h3 className="contact-form-title">Send a Message</h3>
+            {/* Avatar */}
+            <MehakAvatar />
+          </div>
 
-          {/* Name + Email */}
-          <div className="contact-row">
-            <div className="contact-field">
-              <label className="contact-label">
-                <span className="contact-label-icon"><UserIcon /></span>
-                Name *
-              </label>
-              <input
-                className={`contact-input ${errors.name ? 'contact-input-err' : ''}`}
-                placeholder="Your full name"
-                value={form.name}
-                onChange={e => handleChange('name', e.target.value)}
-              />
-              {errors.name && <span className="contact-err">{errors.name}</span>}
+          {/* RIGHT — form */}
+          <div className="glass contact-form-card reveal"
+            style={{ transitionDelay: '150ms' }}>
+
+            <h3 className="contact-form-title">Send a Message</h3>
+
+            {/* Name + Email */}
+            <div className="contact-row">
+              <div className="contact-field">
+                <label className="contact-label">
+                  <span className="contact-label-icon"><UserIcon /></span>
+                  Name *
+                </label>
+                <input
+                  className={`contact-input ${errors.name ? 'contact-input-err' : ''}`}
+                  placeholder="Your full name"
+                  value={form.name}
+                  onChange={e => handleChange('name', e.target.value)}
+                />
+                {errors.name && <span className="contact-err">{errors.name}</span>}
+              </div>
+
+              <div className="contact-field">
+                <label className="contact-label">
+                  <span className="contact-label-icon"><EmailIcon /></span>
+                  Email *
+                </label>
+                <input
+                  className={`contact-input ${errors.email ? 'contact-input-err' : ''}`}
+                  placeholder="your@email.com"
+                  value={form.email}
+                  onChange={e => handleChange('email', e.target.value)}
+                />
+                {errors.email && <span className="contact-err">{errors.email}</span>}
+              </div>
             </div>
 
+            {/* Subject */}
+            <div className="contact-field">
+              <label className="contact-label">Subject</label>
+              <input
+                className="contact-input"
+                placeholder="What is this about? (optional)"
+                value={form.subject}
+                onChange={e => handleChange('subject', e.target.value)}
+              />
+            </div>
+
+            {/* Message */}
             <div className="contact-field">
               <label className="contact-label">
-                <span className="contact-label-icon"><EmailIcon /></span>
-                Email *
+                <span className="contact-label-icon"><MsgIcon /></span>
+                Message *
               </label>
-              <input
-                className={`contact-input ${errors.email ? 'contact-input-err' : ''}`}
-                placeholder="your@email.com"
-                value={form.email}
-                onChange={e => handleChange('email', e.target.value)}
+              <textarea
+                className={`contact-input contact-textarea
+                  ${errors.message ? 'contact-input-err' : ''}`}
+                placeholder="Write your message here..."
+                rows={5}
+                value={form.message}
+                onChange={e => handleChange('message', e.target.value)}
               />
-              {errors.email && <span className="contact-err">{errors.email}</span>}
+              {errors.message && <span className="contact-err">{errors.message}</span>}
             </div>
-          </div>
 
-          {/* Subject */}
-          <div className="contact-field">
-            <label className="contact-label">Subject</label>
-            <input
-              className="contact-input"
-              placeholder="What is this about? (optional)"
-              value={form.subject}
-              onChange={e => handleChange('subject', e.target.value)}
-            />
-          </div>
+            {/* Submit */}
+            <button
+              className="contact-submit"
+              onClick={handleSubmit}
+              disabled={status === 'sending'}
+            >
+              {status === 'sending' ? (
+                <><span className="contact-spinner" /> Sending...</>
+              ) : (
+                <><SendIcon /> Send Message</>
+              )}
+            </button>
 
-          {/* Message */}
-          <div className="contact-field">
-            <label className="contact-label">
-              <span className="contact-label-icon"><MsgIcon /></span>
-              Message *
-            </label>
-            <textarea
-              className={`contact-input contact-textarea ${errors.message ? 'contact-input-err' : ''}`}
-              placeholder="Write your message here..."
-              rows={6}
-              value={form.message}
-              onChange={e => handleChange('message', e.target.value)}
-            />
-            {errors.message && <span className="contact-err">{errors.message}</span>}
-          </div>
-
-          {/* Submit */}
-          <button
-            className="contact-submit"
-            onClick={handleSubmit}
-            disabled={status === 'sending'}
-          >
-            {status === 'sending' ? (
-              <>
-                <span className="contact-spinner" />
-                Sending...
-              </>
-            ) : (
-              <>
-                <SendIcon />
-                Send Message
-              </>
+            {status === 'success' && (
+              <div className="contact-success">
+                Message sent successfully! I will get back to you soon.
+              </div>
             )}
-          </button>
-
-          {status === 'success' && (
-            <div className="contact-success">
-              Message sent successfully! I will get back to you soon.
-            </div>
-          )}
-
-          {status === 'error' && (
-            <div className="contact-error">
-              Something went wrong. Please try again or email me directly.
-            </div>
-          )}
-
+            {status === 'error' && (
+              <div className="contact-error">
+                Something went wrong. Please try again or email me directly.
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
