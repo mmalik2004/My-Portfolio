@@ -11,12 +11,12 @@ const SKILL_GROUPS = [
   {
     title: 'Web Technologies',
     color: '#ec4899',
-    skills: ['ReactJS', 'NodeJS', 'ExpressJS', 'MongoDB', 'WebSockets', 'HTML', 'CSS'],
+    skills: ['ReactJS', 'NodeJS', 'ExpressJS', 'MongoDB', 'HTML', 'CSS'],
   },
   {
     title: 'Core CS Subjects',
     color: '#f97316',
-    skills: ['DSA', 'OOPs', 'DBMS', 'MySQL', 'Operating Systems'],
+    skills: ['DSA', 'OOP', 'DBMS', 'SQL', 'Operating Systems'],
   },
   {
     title: 'Developer Tools',
@@ -80,10 +80,7 @@ function About() {
             <h3>Software Engineer </h3>
 
             <p>
-              I'm Mehak, a B.Tech Computer Engineering student specializing in 
-              web development. I enjoy building real-time, high-performance web applications
-              using the MERN stack — from architecting WebSocket systems to crafting clean,
-              responsive UIs.
+              I'm Mehak, a B.Tech Computer Engineering graduate specializing in web development. I enjoy building real-time, high-performance web applications using the MERN stack — from architecting WebSocket systems to crafting clean, responsive UIs.
             </p>
 
             <p>
@@ -92,8 +89,7 @@ function About() {
             </p>
 
             <p>
-              Outside of building projects, I'm an active member of Manan - A TechnoSurge club
-              at YMCA, where I organized Zenith, a 24-hour cross-college hackathon.
+              Beyond development, I was an active member of Manan – A TechnoSurge at YMCA, where I contributed to creating technical experiences for students.
             </p>
 
             <div className="tag-row">
