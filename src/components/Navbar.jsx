@@ -6,7 +6,7 @@ const LINKS = [
   { label: 'Home',       to: '/'           },
   { label: 'About',      to: '/about'      },
   { label: 'Projects',   to: '/projects'   },
-  // { label: 'Experience', to: '/experience' },
+  { label: 'Experience', to: '/experience' },
   { label: 'Education',  to: '/education'  },
   { label: 'Contact',    to: '/contact'    },
 ];
