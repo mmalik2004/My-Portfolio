@@ -9,13 +9,13 @@ const EXPERIENCES = [
     period: 'May 2026 – Present',
     type: 'active',
     badge: '● Currently Working',
-    bullets: [
-      'Developed responsive web applications using React.js, JavaScript, HTML5, and CSS3 for internal business tools.',
-      'Created reusable UI components and implemented modern frontend practices to improve maintainability and user experience.',
-      'Contributed to debugging, testing, and code review processes while working in an Agile development environment',
-      'Improved application responsiveness and ensured compatibility across multiple browsers and screen sizes.',
-    ],
-    tags: ['React', 'JavaScript', 'Responsive Design', 'Advanced CSS'],
+   bullets: [
+    'Developed RESTful APIs with Spring Boot, implementing complete CRUD operations and establishing connections to MySQL and MongoDB databases.',
+    'Tested and validated endpoints with Postman, handling edge cases and response payloads to ensure service reliability.',
+    'Built responsive UI modules using React.js, JavaScript, and CSS3, following clean coding practices for maintainability.',
+    'Collaborated with senior engineers in an Agile setting, participating in daily standups, code reviews, and debugging tasks.',
+  ],
+  tags: ['Spring Boot', 'Java', 'REST APIs', 'MySQL', 'MongoDB', 'Postman', 'React.js'],
     dotActive: true,
   },
 ];
