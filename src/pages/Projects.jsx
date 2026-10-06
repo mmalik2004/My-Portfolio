@@ -14,16 +14,39 @@ const GHIcon = () => (
 /* ── Projects data from resume ── */
 const PROJECTS = [
   {
+    title: 'Banking App',
+    date: 'Sept 2026',
+    gradient: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #2563eb 100%)',
+    tags: ['Java', 'Spring Boot', 'Spring Data JPA', 'MySQL', 'REST APIs'],
+    bullets: [
+      'Engineered a RESTful banking application using Java, Spring Boot, Spring Data JPA, and MySQL to support secure account and transaction management.',
+      'Designed and implemented REST APIs for account creation, retrieval, deposits, withdrawals, and deletion, following structured backend development practices.',
+      'Implemented global exception handling with custom error responses and appropriate HTTP status codes, improving reliability and debugging experience.',
+    ],
+    github: 'https://github.com/mmalik2004/banking-rest-api', /* ← update link if needed */
+  },
+  {
+    title: 'SnapURL',
+    date: 'Sept 2026',
+    gradient: 'linear-gradient(135deg, #064e3b 0%, #065f46 50%, #059669 100%)',
+    tags: ['Java', 'Spring Boot', 'Spring Data JPA', 'MySQL', 'REST APIs'],
+    bullets: [
+      'Engineered a high-performance URL shortener using Spring Boot, Java, and MySQL, implementing Base62 encoding to generate unique aliases with sub-50ms redirection latency.',
+      'Integrated Spring Data JPA and Hibernate to optimize schema mapping and query execution, handling 100% of redirect lookups through indexed key retrieval.',
+    ],
+    github: 'https://github.com/mmalik2004/url-shortener-spring-boot', /* ← update link if needed */
+  },
+  {
     title: 'Live-Code-Studio',
     date: 'Oct 2025',
     gradient: 'linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #7c3aed 100%)',
-    tags: ['MongoDB', 'ReactJS', 'NodeJS', 'ExpressJS', 'WebSockets', 'Vercel'],
+    tags: ['MongoDB', 'React.js', 'Node.js', 'Express.js', 'WebSockets', 'Vercel'],
     bullets: [
-      'Full-stack real-time collaborative editor with concurrent multi-user sessions.',
-      'Room-based WebSocket architecture with live typing indicators and instant code propagation.',
-      'Used React hooks (useEffect, useRef) for complex state sync via Socket.io.',
+      'Architected and deployed a full-stack real-time collaborative editor supporting concurrent multi-user sessions with low-latency synchronization.',
+      'Built room-based WebSocket architecture enabling live typing indicators, instant code propagation, conflict reduction.',
+      'Leveraged React hooks (useEffect, useRef) and Socket.io to manage editor state and synchronize real-time updates without cursor-sync conflicts.',
     ],
-    github: 'https://github.com/mmalik2004/Live-code-studio',   /* ← update */
+    github: 'https://github.com/mmalik2004/Live-code-studio',
   },
   {
     title: 'Weather App',
@@ -31,37 +54,12 @@ const PROJECTS = [
     gradient: 'linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0284c7 100%)',
     tags: ['JavaScript', 'CSS', 'HTML', 'OpenWeather API'],
     bullets: [
-      'Clean weather dashboard with current temperature,humidity,precipitation data.',
+      'Clean weather dashboard with current temperature, humidity, precipitation data.',
       'Location search with real-time API calls to OpenWeather.',
       'Fully responsive layout across all screen sizes.',
     ],
-    github: 'https://github.com/mmalik2004/SkyCast',   /* ← update */
+    github: 'https://github.com/mmalik2004/SkyCast',
   },
-  {
-    title: 'TypeRush',
-    date: 'Jun 2025',
-    gradient: 'linear-gradient(135deg, #064e3b 0%, #065f46 50%, #059669 100%)',
-    tags: ['JavaScript', 'CSS', 'HTML'],
-    bullets: [
-      'Real-time typing analytics app — calculates WPM & accuracy with immediate feedback.',
-      'Optimized DOM rendering to reduce input lag by ~25% for seamless real-time tracking.',
-      'Responsive UI supporting 7 devices/browsers, improving user satisfaction by ~15%.',
-    ],
-    github: 'https://github.com/mmalik2004/TypeRush',   /* ← update */
-  },
-  {
-    title: 'Simon Game',
-    date: 'Aug 2024',
-    gradient: 'linear-gradient(135deg, #450a0a 0%, #7f1d1d 50%, #dc2626 100%)',
-    tags: ['JavaScript', 'CSS', 'HTML'],
-    bullets: [
-      'Browser-based memory game with adaptive difficulty algorithm.',
-      'Reduced average completion time by 25%; added audio cues, dark mode, responsive layout.',
-      'Delivered full product lifecycle within 2 months.',
-    ],
-    github: 'https://github.com/mmalik2004/Simon_Game',   /* ← update */
-  },
-  
 ];
 
 /* ── Project card ── */
