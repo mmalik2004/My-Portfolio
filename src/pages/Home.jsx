@@ -174,10 +174,11 @@ const STATS = [
 export default function Home() {
   const navigate = useNavigate();
   const typed = useTypewriter([
-    'Software Developer',
-    'DSA Problem Solver',
-    'CS Engineering Student',
-  ]);
+  'Software Development Engineer',
+  'Java & Backend Developer',
+  'Spring Boot Developer',
+  'DSA Problem Solver',
+]);
 
   return (
     <section className="home-hero">
@@ -202,9 +203,10 @@ export default function Home() {
             </p>
 
             <p className="hero-bio">
-              B.Tech Computer Engineering student at J.C. Bose University (YMCA) — CGPA 8.40.
-              I build full-stack web apps with the MERN stack, love real-time systems,
-              and have solved 900+ DSA problems.
+              Full-Stack Engineer and Computer Engineering 
+              graduate from J.C. Bose University (YMCA). I specialize in robust
+              Java & Spring Boot backend services, craft modern
+              React.js interfaces, and have solved 900+ DSA problems.
             </p>
 
             <div className="hero-btns">
