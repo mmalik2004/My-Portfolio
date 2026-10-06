@@ -6,23 +6,24 @@ const SKILL_GROUPS = [
   {
     title: 'Languages',
     color: '#8b5cf6',
-    skills: ['JavaScript', 'Java'],
+    skills: ['JavaScript', 'Java','SQL'],
   },
   {
-    title: 'Web Technologies',
+    title: 'Frameworks & Libraries',
     color: '#ec4899',
-    skills: ['ReactJS', 'NodeJS', 'ExpressJS', 'MongoDB', 'HTML', 'CSS'],
+    skills: ['Spring Boot','React.js', 'Node.js', 'Express.js','WebSockets','Spring Data JPA', 'Hibernate', 'HTML', 'CSS'],
   },
   {
-    title: 'Core CS Subjects',
-    color: '#f97316',
-    skills: ['DSA', 'OOP', 'DBMS', 'SQL', 'Operating Systems'],
-  },
-  {
-    title: 'Developer Tools',
+    title: 'Databases & Tools',
     color: '#10b981',
-    skills: ['Git', 'GitHub', 'VS Code', 'Vercel'],
+    skills: ['MongoDB', 'MySQL', 'Postman', 'Git', 'GitHub', 'Vercel'],
   },
+  {
+    title: 'Core Concepts',
+    color: '#f97316',
+    skills: ['DSA', 'OOP', 'DBMS', 'Operating Systems','REST APIs'],
+  }
+  
 ];
 
 /* ── Staggered reveal delay helper ── */
@@ -62,8 +63,9 @@ function About() {
 
             <div className="about-info-list">
               {[
-                { icon: '🎓', text: 'J.C. Bose University (YMCA)' },
-                { icon: '📍', text: 'Faridabad, Haryana, India'       },
+                { icon: '🎓', text: 'B.Tech CSE, YMCA' },
+                { icon: '💼', text: 'SDE Intern @ Bharti Airtel'},
+                { icon: '📍', text: 'Gurugram, Haryana, India' },
                 { icon: '📊', text: 'CGPA: 8.40'                   },
                 { icon: '✉️', text: 'mehakmalik1282@gmail.com' }
               ].map(({ icon, text }) => (
@@ -80,20 +82,22 @@ function About() {
             <h3>Software Engineer </h3>
 
             <p>
-              I'm Mehak, a B.Tech Computer Engineering graduate specializing in web development. I enjoy building real-time, high-performance web applications using the MERN stack — from architecting WebSocket systems to crafting clean, responsive UIs.
+             I'm Mehak, a B.Tech Computer Engineering graduate from J.C. Bose University (YMCA). 
+              I specialize in building robust backend architectures and scalable RESTful APIs using Java and Spring Boot, paired with interactive, modern frontends in React.js.
             </p>
 
             <p>
-              My love for problem-solving extends beyond code — I've solved 900+ DSA problems,
-              secured a position in the top 1.92% in JEE Main among 1.2M+ candidates
+             My focus on problem-solving extends beyond code — I've solved 900+ DSA problems,
+              ranked in the top 1.92% in JEE Main among 1.2M+ candidates, and engineered real-time systems using WebSockets.
             </p>
 
             <p>
-              Beyond development, I was an active member of Manan – A TechnoSurge at YMCA, where I contributed to creating technical experiences for students.
+              Beyond development, I was an active member of Manan – A TechnoSurge at YMCA, 
+              where I organized hackathons and contributed to creating high-impact technical experiences for students.
             </p>
 
             <div className="tag-row">
-              {['Software Development', 'Real-time Systems', 'DSA', 'Hackathons', 'Open Source'].map((t) => (
+              {['Software Development', 'Java & Spring Boot' , 'Real-time Systems', 'DSA'].map((t) => (
                 <span key={t} className="tag-pill">{t}</span>
               ))}
             </div>
